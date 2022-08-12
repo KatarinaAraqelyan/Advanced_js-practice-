@@ -1,30 +1,54 @@
-//դեռ չեմ ավարտել
-class bitset {
-    vector = 0
-     set(pos,value){
-        if(value === 0) {
-            return this.vector
+function bin(n) {
+    let str = "";
+    for (let i = 1 << 30; i > 0; i = Math.floor(i/2)) {
+        if((n & i) !== 0) {
+            str += "1";
         } else {
-            this.vector +=  Math.pow(2,pos)
-            return this.vector
+            str += "0";
         }
     }
-    get(index) {
-        if(this.vector & Math.pow(2,index)){
+    return str;
+}
+
+class bitset {
+    constructor(size) {
+        this.size = size
+    }
+    vector = []
+    create(){
+        let len =  Math.ceil(this.size / 32);
+        this.vector = Array(len).fill(0);
+    }
+
+    set(ind){
+        let index = Math.floor(ind / 32)
+        this.vector[index] +=  Math.pow(2, ind % 32)
+        return this.vector
+    }
+
+    get(ind){
+        let index = Math.floor(ind / 32)
+        if(this.vector[index] & Math.pow(2,ind)){
             return 1;
         }  return 0;
     }
-    printVector() {
-        console.log(`your vector: ${this.vector.toString(2)}`);
+    clear(){
+        return this.vector = this.vector.fill(0)
     }
-    clear() {
-        this.vector = 0;
+    print(){
+        let len =  Math.ceil(this.size / 32);
+        let str = "";
+        for (let i = len -1 ; i > 0; i--) {
+            str += bin(this.vector[i]);
+        }
+        console.log(str)
     }
+
 }
 
-let x = new bitset();
-x.set(3,1)
-x.set(2,1)
-x.set(1,1)
-x.set(0,1)
-x.printVector()
+let x = new bitset(124);
+x.create()
+x.set(120);
+x.print();
+
+
