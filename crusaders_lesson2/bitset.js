@@ -28,7 +28,7 @@ class bitset {
 
     get(ind){
         let index = Math.floor(ind / 32)
-        if(this.vector[index] & Math.pow(2,ind)){
+        if(this.vector[index] & Math.pow(2,ind % 32)){
             return 1;
         }  return 0;
     }
@@ -46,9 +46,7 @@ class bitset {
 
 }
 
-let x = new bitset(124);
-x.create()
-x.set(120);
-x.print();
 
-
+module.exports = {
+    bitset
+}

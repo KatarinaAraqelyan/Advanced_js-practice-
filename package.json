@@ -1,0 +1,8 @@
+{
+  "name": "Advanced_js-practice-",
+  "version": "1.0.0",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "line-reader": "^0.4.0"
+  }
+}
