@@ -3,4 +3,4 @@ function is_unique(str){
     return set.size === str.length
 }
 
-console.log(is_unique("hello"))
+console.log(is_unique("Helo🥸🥸"))
